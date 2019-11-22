@@ -1,38 +1,36 @@
 <template>
 	<!-- TODO decouple visual color value from v-model value to fade between full 255 and 0 on only 2 channels -->
 	<div>
-		<div class="wrapper-tone-picker">
-			<GlobalEvents
-				@mousemove="move"
-				@touchmove="move"
-				@mouseup="end"
-				@touchend="end"
-			/>
+		<GlobalEvents
+			@mousemove="move"
+			@touchmove="move"
+			@mouseup="end"
+			@touchend="end"
+		/>
+		<div
+			ref="picker"
+			:style="
+				`background: linear-gradient(to right, ${colorLeft} 0%, ${colorRight} 100%);`
+			"
+			@touchstart="start"
+			@mousedown="start"
+			class="tone-picker"
+		>
 			<div
-				ref="picker"
-				class="tone-picker"
-				:style="
-					`background: linear-gradient(to right, ${colorLeft} 0%, ${colorRight} 100%);`
-				"
-				@mousedown="start"
-				@touchstart="start"
-			>
-				<div
-					ref="marker"
-					:class="{ marker: true, active: dragActive }"
-					:style="{
-						background: currentColor,
-						left: `${x * 100}%`,
-						bottom: `${y * 100}%`,
-					}"
-				/>
-			</div>
+				ref="marker"
+				:class="{ marker: true, active: dragActive }"
+				:style="{
+					background: currentColor,
+					left: `${x * 100}%`,
+					bottom: `${y * 100}%`,
+				}"
+			/>
 		</div>
 	</div>
 </template>
 
 <script>
-import colorConversion from "./colorConversion.js";
+import colorConversion from "@/colorConversion.js";
 import GlobalEvents from "vue-global-events";
 
 export default {
@@ -43,7 +41,7 @@ export default {
 	props: {
 		value: {
 			type: Array,
-			required: true,
+			default: () => [1, 0],
 			validator: (v) => v[0] >= 0 && v[0] <= 1 && v[1] >= 0 && v[1] <= 1,
 		},
 		colorLeft: {
@@ -195,9 +193,6 @@ export default {
 $height: 32px;
 $borderWidth: 2px;
 
-.wrapper-tone-picker {
-	padding: $height;
-}
 .tone-picker {
 	position: relative;
 	width: 100%;
@@ -224,12 +219,12 @@ $borderWidth: 2px;
 	padding: ($height / 2) - $borderWidth;
 	margin-bottom: -($height / 2);
 	margin-left: -($height / 2);
-	border: $borderWidth solid var(--color-border-i);
+	border: $borderWidth solid var(--color-border-i, #fff);
 	border-radius: 50%;
 
 	&.active {
-		box-shadow: 0 0 0 2px var(--color-border),
-			0 0 0 2px var(--color-border) inset;
+		box-shadow: 0 0 0 2px var(--color-border, #333),
+			0 0 0 2px var(--color-border, #333) inset;
 	}
 }
 </style>

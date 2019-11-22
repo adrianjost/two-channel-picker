@@ -1,10 +1,10 @@
 {
-	"name": "@adrianjost/TwoChannelPicker",
+	"name": "@adrianjost/two-channel-picker",
 	"version": "0.1.0",
 	"author": "Adrian Jost <github@adrianjost.dev> (https://adrianjost.dev)",
 	"scripts": {
 		"lint": "vue-cli-service lint",
-		"build": "vue-cli-service build --target lib --name TwoChannelPicker ./src/TwoChannelPicker.js --mode production --dest dist/lib",
+		"build": "vue-cli-service build --target lib --name TwoChannelPicker ./src/TwoChannelPicker.vue --mode production --dest dist/lib",
 		"dev": "vue-cli-service serve"
 	},
 	"dependencies": {
