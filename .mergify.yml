@@ -1,0 +1,44 @@
+pull_request_rules:
+  - name: automatic merge for Greenkeeper pull requests on master
+    conditions:
+      - author=greenkeeper[bot]
+      - label~=greenkeeper
+      - status-success~=Travis CI
+      - status-success~=WIP
+    actions:
+      merge:
+        method: squash
+        strict: true
+  - name: automatic merge for Dependabot pull requests on master
+    conditions:
+      - author=dependabot[bot]
+      - label~=dependencies
+      - status-success~=Travis CI
+      - status-success~=WIP
+    actions:
+      merge:
+        method: squash
+        strict: true
+  - name: automatic merge on CI success and review
+    conditions:
+      - label~=merge pull
+      - status-success~=Travis CI
+      - status-success~=WIP
+    actions:
+      merge:
+        method: merge
+        strict: true
+  - name: add WIP label when WIP is in title
+    conditions:
+      - title~=WIP
+    actions:
+      comment:
+        message: Please remove WIP from the title. I have set the WIP Label for you instead.
+      label:
+        add:
+          - WIP
+  - name: delete merged branch
+    conditions:
+      - merged
+    actions:
+      delete_head_branch: {}

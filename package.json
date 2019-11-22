@@ -1,0 +1,61 @@
+{
+	"name": "@adrianjost/two-channel-picker",
+	"version": "0.1.0",
+	"author": "Adrian Jost <github@adrianjost.dev> (https://adrianjost.dev)",
+	"scripts": {
+		"lint": "vue-cli-service lint",
+		"build": "vue-cli-service build --target lib --name TwoChannelPicker ./src/TwoChannelPicker.vue --mode production --dest dist/lib",
+		"dev": "vue-cli-service serve"
+	},
+	"dependencies": {
+		"vue": "^2.6.10"
+	},
+	"devDependencies": {
+		"@vue/cli-plugin-babel": "^3.7.0",
+		"@vue/cli-plugin-eslint": "^3.8.0",
+		"@vue/cli-service": "^4.0.0",
+		"@vue/eslint-config-prettier": "^6.0.0",
+		"babel-eslint": "^10.0.1",
+		"eslint": "^6.1.0",
+		"eslint-config-prettier": "^6.0.0",
+		"eslint-plugin-prettier": "^3.1.0",
+		"eslint-plugin-vue": "^6.0.0",
+		"lint-staged": "^9.2.1",
+		"node-sass": "^4.12.0",
+		"npm-run-all": "^4.1.5",
+		"prettier": "^1.17.1",
+		"sass-loader": "^8.0.0",
+		"vue-global-events": "^1.1.2",
+		"vue-template-compiler": "^2.5.21",
+		"vuepress": "^1.0.3"
+	},
+	"postcss": {
+		"plugins": {
+			"autoprefixer": {}
+		}
+	},
+	"browserslist": [
+		"> 1%",
+		"last 2 versions"
+	],
+	"files": [
+		"dist/lib/*"
+	],
+	"gitHooks": {
+		"pre-commit": "lint-staged"
+	},
+	"homepage": "http://github.com/adrianjost/TwoChannelPicker",
+	"license": "MIT",
+	"lint-staged": {
+		"*.{js,vue}": [
+			"vue-cli-service lint",
+			"git add"
+		]
+	},
+	"main": "dist/lib/TwoChannelPicker.umd.min.js",
+	"module": "dist/lib/TwoChannelPicker.common.js",
+	"publishConfig": {
+		"access": "public"
+	},
+	"repository": "github:adrianjost/vue-filter-ui"
+}
