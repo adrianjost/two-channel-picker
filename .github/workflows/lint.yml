@@ -1,0 +1,15 @@
+name: Build and Publish
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: Install
+      run: |
+        npm ci
+    - name: Lint
+      run: |
+        npm run lint
