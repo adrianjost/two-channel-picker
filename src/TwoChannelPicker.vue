@@ -137,13 +137,13 @@ export default {
 	},
 	mounted() {
 		window.addEventListener("resize", this.resize);
-		this.resize();
+		setTimeout(this.resize, 0);
 	},
 	methods: {
 		getTypesafeAttr(value) {
 			try {
-				if (typeof this.value === "string") {
-					return JSON.parse(this.value);
+				if (typeof value === "string") {
+					return JSON.parse(value);
 				} else {
 					return value;
 				}
@@ -197,6 +197,7 @@ export default {
 			this.frame.minY = boundingBox.top;
 			this.frame.maxX = boundingBox.right;
 			this.frame.maxY = boundingBox.bottom;
+			this.$forceUpdate();
 		},
 		_getEventPosition(event) {
 			// mouse
