@@ -41,7 +41,10 @@
 		"last 2 versions"
 	],
 	"files": [
-		"dist/lib/*"
+		"dist/*",
+		"docs/*",
+		"LICENSE",
+		"README.md"
 	],
 	"gitHooks": {
 		"pre-commit": "lint-staged"
