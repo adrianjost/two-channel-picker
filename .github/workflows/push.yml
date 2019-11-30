@@ -1,0 +1,25 @@
+name: Push
+
+on: [push]
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Install
+        run: |
+          npm ci
+      - name: Lint
+        run: |
+          npm run lint
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Install
+        run: |
+          npm ci
+      - name: Build
+        run: |
+          npm run build
