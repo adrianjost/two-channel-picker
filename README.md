@@ -7,13 +7,13 @@
 I needed an intuitive color picker to control my warm-white-cold-white (WWCW) LED Strips with the [SmartLight Project](https://github.com/adrianjost/SmartLight-Web-Client).
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/adrianjost/two-channel-picker/master/docs/img/screenshot.png" alt="two channel picker screenshot" width="300px">
+  <img src="docs/img/screenshot.png" alt="two channel picker screenshot" width="300px">
 </p>
 
 The picker value is therefore indepent from the displayed color. The given value is a number between 0 and 1 for each of the two channels. The brightness can be determined by dragging the slider along the Y-axis. Dragging along the X-axis changes the relationship between the two channels.
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/adrianjost/two-channel-picker/master/docs/img/values.png" align="center" alt="two channel picker screenshot" width="500px">
+  <img src="docs/img/values.png" align="center" alt="two channel picker values" width="500px">
 </p>
 
 ## Usage
