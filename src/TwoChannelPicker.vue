@@ -22,6 +22,7 @@
 				:style="{
 					background: currentColor,
 					transform: translate,
+					...getMarkerStyles(_options),
 				}"
 			/>
 		</div>
@@ -39,20 +40,13 @@ export default {
 	mixins: [colorConversion],
 	props: {
 		value: {
-			type: Array,
+			type: [Array, String],
 			default: () => [1, 0],
 			validator: (v) => v[0] >= 0 && v[0] <= 1 && v[1] >= 0 && v[1] <= 1,
 		},
-		colorLeft: {
-			type: String,
-			default: "#fd9",
-		},
-		colorRight: {
-			type: String,
-			default: "#9df",
-		},
-		readOnly: {
-			type: Boolean,
+		options: {
+			type: Object,
+			default: () => ({}),
 		},
 	},
 	data() {
@@ -71,18 +65,20 @@ export default {
 		};
 	},
 	computed: {
+		_options() {
+			return {
+				colorLeft: "#fd9",
+				colorRight: "#9df",
+				readOnly: false,
+				marker: {
+					radius: 16,
+					borderWidth: 2,
+				},
+				...this.getTypesafeAttr(this.options),
+			};
+		},
 		typeSafeValue() {
-			try {
-				if (Array.isArray(this.value)) {
-					return this.value;
-				} else if (typeof this.value === "string") {
-					return JSON.parse(this.value);
-				}
-			} catch (error) {
-				console.error(error);
-			}
-			return [1, 0];
-			console.error("unable to convert value to the correct type");
+			return this.getTypesafeAttr(this.value);
 		},
 		currentColor() {
 			return this.getColorForPosition({
@@ -94,8 +90,8 @@ export default {
 			return this.getTranslate(this.marker.x, this.marker.y);
 		},
 		colorMid() {
-			const cA = this.hex2rgb(this.colorLeft);
-			const cB = this.hex2rgb(this.colorRight);
+			const cA = this.hex2rgb(this._options.colorLeft);
+			const cB = this.hex2rgb(this._options.colorRight);
 			const maxColor = (v1, v2) => {
 				const s = v1 + v2;
 				return s > 255 ? 255 : s;
@@ -107,7 +103,7 @@ export default {
 			});
 		},
 		backgroundGradient() {
-			return `linear-gradient(to right, ${this.colorLeft} 0%, ${this.colorMid} 50%, ${this.colorRight} 100%)`;
+			return `linear-gradient(to right, ${this._options.colorLeft} 0%, ${this.colorMid} 50%, ${this._options.colorRight} 100%)`;
 		},
 	},
 	watch: {
@@ -144,11 +140,24 @@ export default {
 		this.resize();
 	},
 	methods: {
+		getTypesafeAttr(value) {
+			try {
+				if (typeof this.value === "string") {
+					return JSON.parse(this.value);
+				} else {
+					return value;
+				}
+			} catch (error) {
+				console.error(error);
+			}
+			console.error("unable to type convert attribute");
+			return value;
+		},
 		/*
 			START MARKER POSITIONING
 		*/
 		start(event) {
-			if (this.readOnly) {
+			if (this._options.readOnly) {
 				return;
 			}
 			this.resize();
@@ -156,14 +165,14 @@ export default {
 			this.move(event);
 		},
 		end(event) {
-			if (this.readOnly) {
+			if (this._options.readOnly) {
 				return;
 			}
 			this.move(event);
 			this.dragActive = false;
 		},
 		move(event) {
-			if (this.readOnly) {
+			if (this._options.readOnly) {
 				return;
 			}
 			// event.preventDefault();
@@ -219,7 +228,7 @@ export default {
 			END MARKER POSITIONING
 		*/
 		/*
-			START MARKER COLOR
+			START MARKER STYLES
 		*/
 		getColorBetweenColors(colorA, colorB, position) {
 			const cA = this.hex2rgb(colorA);
@@ -235,14 +244,14 @@ export default {
 			let newColor;
 			if (x < 0.5) {
 				newColor = this.getColorBetweenColors(
-					this.colorLeft,
+					this._options.colorLeft,
 					this.colorMid,
 					x * 2
 				);
 			} else {
 				newColor = this.getColorBetweenColors(
 					this.colorMid,
-					this.colorRight,
+					this._options.colorRight,
 					(x - 0.5) * 2
 				);
 			}
@@ -251,8 +260,17 @@ export default {
 			newColor.b = Math.round(newColor.b * y);
 			return this.rgb2hex(newColor);
 		},
+		getMarkerStyles(options) {
+			const { radius, borderWidth } = options.marker;
+			return {
+				padding: `${radius - borderWidth}px`,
+				"margin-bottom": `${-radius}px`,
+				"margin-left": `${-radius}px`,
+				"border-width": `${borderWidth}px`,
+			};
+		},
 		/*
-			END MARKER COLOR
+			END MARKER STYLES
 		*/
 		/* START V-MODEL CALCULATIONS */
 		getChannelsForPosition({ x, y }) {
@@ -300,9 +318,6 @@ $borderWidth: 2px;
 	left: 0;
 	z-index: 2;
 	display: inline-block;
-	padding: ($height / 2) - $borderWidth;
-	margin-bottom: -($height / 2);
-	margin-left: -($height / 2);
 	border: $borderWidth solid var(--color-border-i, #fff);
 	border-radius: 50%;
 
