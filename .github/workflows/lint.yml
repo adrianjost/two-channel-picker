@@ -1,9 +1,9 @@
-name: Build and Publish
+name: Lint
 
 on: [push]
 
 jobs:
-  build:
+  vue-cli:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1

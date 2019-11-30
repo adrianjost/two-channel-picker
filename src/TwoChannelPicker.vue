@@ -21,8 +21,7 @@
 				:class="{ marker: true, active: dragActive }"
 				:style="{
 					background: currentColor,
-					left: `${x * 100}%`,
-					bottom: `${y * 100}%`,
+					transform: translate,
 				}"
 			/>
 		</div>
@@ -59,8 +58,16 @@ export default {
 	data() {
 		return {
 			dragActive: false,
-			x: 1,
-			y: 1,
+			marker: {
+				x: 1,
+				y: 1,
+			},
+			frame: {
+				minX: 0,
+				maxX: 1,
+				minY: 0,
+				maxY: 1,
+			},
 		};
 	},
 	animation: {
@@ -71,30 +78,36 @@ export default {
 	computed: {
 		currentColor() {
 			return this.getColorForPosition({
-				x: this.x,
-				y: this.y,
+				x: this.marker.x,
+				y: this.marker.y,
 			});
+		},
+		translate() {
+			return this.getTranslate(this.marker.x, this.marker.y);
 		},
 	},
 	watch: {
 		currentColor(to) {
-			this.$emit("input", [(1 - this.x) * this.y, this.x * this.y]);
+			const { x, y } = this.marker;
+			this.$emit("input", [(1 - x) * y, x * y]);
 		},
-		value(values) {
-			if (this.$options.hasChangedLately) {
-				clearTimeout(this.$options.changeTimeout);
+		value: {
+			immediate: true,
+			handler(values) {
+				if (this.$options.hasChangedLately) {
+					clearTimeout(this.$options.changeTimeout);
+					this.$options.changeTimeout = setTimeout(() => {
+						this.$options.hasChangedLately = false;
+					}, 200);
+					return;
+				}
+				this.$options.hasChangedLately = true;
 				this.$options.changeTimeout = setTimeout(() => {
 					this.$options.hasChangedLately = false;
 				}, 200);
-				return;
-			}
-			this.$options.hasChangedLately = true;
-			this.$options.changeTimeout = setTimeout(() => {
-				this.$options.hasChangedLately = false;
-			}, 200);
-			const { x, y } = this.getPositionForChannels(values);
-			this.x = x;
-			this.y = y;
+				const { x, y } = this.getPositionForChannels(values);
+				this.marker = this.getPositionForChannels(values);
+			},
 		},
 	},
 	mounted() {
@@ -127,8 +140,8 @@ export default {
 			this.$options.animation.animationFrame = window.requestAnimationFrame(
 				() => {
 					const { x, y } = this.getRelativeEventPosition(event);
-					this.x = x;
-					this.y = y;
+					this.marker.x = x;
+					this.marker.y = y;
 					this.$options.animation.animationFrame = undefined;
 				}
 			);
@@ -138,10 +151,10 @@ export default {
 				return;
 			}
 			const boundingBox = this.$refs.picker.getBoundingClientRect();
-			this.$options.animation.minX = boundingBox.left;
-			this.$options.animation.minY = boundingBox.top;
-			this.$options.animation.maxX = boundingBox.right;
-			this.$options.animation.maxY = boundingBox.bottom;
+			this.frame.minX = boundingBox.left;
+			this.frame.minY = boundingBox.top;
+			this.frame.maxX = boundingBox.right;
+			this.frame.maxY = boundingBox.bottom;
 		},
 		_getEventPosition(event) {
 			// mouse
@@ -155,7 +168,7 @@ export default {
 			};
 		},
 		getRelativeEventPosition(event) {
-			const { minX, maxX, minY, maxY } = this.$options.animation;
+			const { minX, maxX, minY, maxY } = this.frame;
 			const { x, y } = this._getEventPosition(event);
 			const newX = Math.min(Math.max(minX, x), maxX);
 			const newY = Math.min(Math.max(minY, y), maxY);
@@ -163,6 +176,11 @@ export default {
 				x: (newX - minX) / (maxX - minX),
 				y: 1 - (newY - minY) / (maxY - minY),
 			};
+		},
+		getTranslate(posX, posY) {
+			const x = posX * (this.frame.maxX - this.frame.minX);
+			const y = -posY * (this.frame.maxY - this.frame.minY);
+			return `translate(${x}px, ${y}px)`;
 		},
 		getColorForPosition({ x, y }) {
 			const cL = this.hex2rgb(this.colorLeft);
