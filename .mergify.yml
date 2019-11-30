@@ -3,7 +3,7 @@ pull_request_rules:
     conditions:
       - author=greenkeeper[bot]
       - label~=greenkeeper
-      - status-success~=Lint
+      - status-success~=Push
       - status-success~=WIP
     actions:
       merge:
