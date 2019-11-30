@@ -70,12 +70,20 @@ export default {
 			},
 		};
 	},
-	animation: {
-		animationFrame: undefined,
-		changeTimeout: undefined,
-		hasChangedLately: false,
-	},
 	computed: {
+		typeSafeValue() {
+			try {
+				if (Array.isArray(this.value)) {
+					return this.value;
+				} else if (typeof this.value === "string") {
+					return JSON.parse(this.value);
+				}
+			} catch (error) {
+				console.error(error);
+			}
+			return [1, 0];
+			console.error("unable to convert value to the correct type");
+		},
 		currentColor() {
 			return this.getColorForPosition({
 				x: this.marker.x,
@@ -107,7 +115,7 @@ export default {
 			const channels = this.getChannelsForPosition(this.marker);
 			this.$emit("input", channels);
 		},
-		value: {
+		typeSafeValue: {
 			immediate: true,
 			handler(values) {
 				if (this.$options.hasChangedLately) {
@@ -126,6 +134,11 @@ export default {
 			},
 		},
 	},
+	animation: {
+		animationFrame: undefined,
+		changeTimeout: undefined,
+		hasChangedLately: false,
+	},
 	mounted() {
 		window.addEventListener("resize", this.resize);
 		this.resize();
@@ -138,6 +151,7 @@ export default {
 			if (this.readOnly) {
 				return;
 			}
+			this.resize();
 			this.dragActive = true;
 			this.move(event);
 		},
