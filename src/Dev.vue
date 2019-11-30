@@ -1,5 +1,6 @@
 <template>
 	<div class="wrapper">
+		<h1> {{ formatedValue }} </h1>
 		<Picker v-model="value" class="picker" />
 	</div>
 </template>
@@ -15,6 +16,14 @@ export default {
 		return {
 			value: [1, 0],
 		};
+	},
+	computed: {
+		formatedValue() {
+			const digits = 5;
+			const h = Math.pow(10, digits);
+			const format = (v) => parseFloat(Math.round(v * h) / h).toFixed(digits);
+			return this.value.map(format);
+		},
 	},
 	watch: {
 		value(to) {
@@ -33,12 +42,14 @@ export default {
 
 <style lang="scss" scoped>
 .wrapper {
-	height: 100vh;
-	display: flex;
-	align-items: center;
-	justify-content: center;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	text-align: center;
 }
 .picker {
+	display: inline-block;
 	width: 300px;
 	height: 300px;
 }
