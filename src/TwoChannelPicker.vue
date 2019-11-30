@@ -9,9 +9,9 @@
 		/>
 		<div
 			ref="picker"
-			:style="
-				`background: linear-gradient(to right, ${colorLeft} 0%, ${colorRight} 100%);`
-			"
+			:style="{
+				background: backgroundGradient,
+			}"
 			@touchstart="start"
 			@mousedown="start"
 			class="tone-picker"
@@ -85,11 +85,27 @@ export default {
 		translate() {
 			return this.getTranslate(this.marker.x, this.marker.y);
 		},
+		colorMid() {
+			const cA = this.hex2rgb(this.colorLeft);
+			const cB = this.hex2rgb(this.colorRight);
+			const maxColor = (v1, v2) => {
+				const s = v1 + v2;
+				return s > 255 ? 255 : s;
+			};
+			return this.rgb2hex({
+				r: maxColor(cA.r, cB.r),
+				g: maxColor(cA.g, cB.g),
+				b: maxColor(cA.b, cB.b),
+			});
+		},
+		backgroundGradient() {
+			return `linear-gradient(to right, ${this.colorLeft} 0%, ${this.colorMid} 50%, ${this.colorRight} 100%)`;
+		},
 	},
 	watch: {
 		currentColor(to) {
-			const { x, y } = this.marker;
-			this.$emit("input", [(1 - x) * y, x * y]);
+			const channels = this.getChannelsForPosition(this.marker);
+			this.$emit("input", channels);
 		},
 		value: {
 			immediate: true,
@@ -115,6 +131,9 @@ export default {
 		this.resize();
 	},
 	methods: {
+		/*
+			START MARKER POSITIONING
+		*/
 		start(event) {
 			if (this.readOnly) {
 				return;
@@ -182,27 +201,60 @@ export default {
 			const y = -posY * (this.frame.maxY - this.frame.minY);
 			return `translate(${x}px, ${y}px)`;
 		},
-		getColorForPosition({ x, y }) {
-			const cL = this.hex2rgb(this.colorLeft);
-			const cR = this.hex2rgb(this.colorRight);
-			const currentColor = {
-				r: cL.r + (cR.r - cL.r) * x,
-				g: cL.g + (cR.g - cL.g) * x,
-				b: cL.b + (cR.b - cL.b) * x,
+		/*
+			END MARKER POSITIONING
+		*/
+		/*
+			START MARKER COLOR
+		*/
+		getColorBetweenColors(colorA, colorB, position) {
+			const cA = this.hex2rgb(colorA);
+			const cB = this.hex2rgb(colorB);
+			const mixedColor = {
+				r: cA.r + (cB.r - cA.r) * position,
+				g: cA.g + (cB.g - cA.g) * position,
+				b: cA.b + (cB.b - cA.b) * position,
 			};
-			currentColor.r = Math.round(currentColor.r * y);
-			currentColor.g = Math.round(currentColor.g * y);
-			currentColor.b = Math.round(currentColor.b * y);
-			return this.rgb2hex(currentColor);
+			return mixedColor;
+		},
+		getColorForPosition({ x, y }) {
+			let newColor;
+			if (x < 0.5) {
+				newColor = this.getColorBetweenColors(
+					this.colorLeft,
+					this.colorMid,
+					x * 2
+				);
+			} else {
+				newColor = this.getColorBetweenColors(
+					this.colorMid,
+					this.colorRight,
+					(x - 0.5) * 2
+				);
+			}
+			newColor.r = Math.round(newColor.r * y);
+			newColor.g = Math.round(newColor.g * y);
+			newColor.b = Math.round(newColor.b * y);
+			return this.rgb2hex(newColor);
+		},
+		/*
+			END MARKER COLOR
+		*/
+		/* START V-MODEL CALCULATIONS */
+		getChannelsForPosition({ x, y }) {
+			const maxA = x < 0.5 ? 1 : (1 - x) * 2;
+			const maxB = x > 0.5 ? 1 : x * 2;
+			return [maxA * y, maxB * y];
 		},
 		getPositionForChannels([a, b]) {
 			const minMax = (min, max, val) => Math.max(min, Math.min(max, val));
 			const scaleFactor = a >= b ? 1 / a || 0 : 1 / b || 0;
 			const scaledValues = [a * scaleFactor, b * scaleFactor];
 			const x = minMax(0, 1, (scaledValues[1] - scaledValues[0] + 1) / 2 || 0);
-			const y = minMax(0, 1, a + b);
+			const y = minMax(0, 1, 1 / scaleFactor);
 			return { x, y };
 		},
+		/* END V-MODEL CALCULATIONS */
 	},
 };
 </script>

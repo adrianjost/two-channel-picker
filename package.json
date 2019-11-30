@@ -1,6 +1,6 @@
 {
 	"name": "@adrianjost/two-channel-picker",
-	"version": "0.1.0",
+	"version": "0.2.0",
 	"author": "Adrian Jost <github@adrianjost.dev> (https://adrianjost.dev)",
 	"scripts": {
 		"lint": "vue-cli-service lint",
