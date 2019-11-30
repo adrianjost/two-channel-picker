@@ -7,18 +7,40 @@
 I needed an intuitive color picker to control my warm-white-cold-white (WWCW) LED Strips with the [SmartLight Project](https://github.com/adrianjost/SmartLight-Web-Client).
 
 <p align="center">
-  <img src="docs/img/screenshot.png" alt="two channel picker screenshot" style="max-width: 300px;">
+  <img src="https://raw.githubusercontent.com/adrianjost/two-channel-picker/master/docs/img/screenshot.png" alt="two channel picker screenshot" style="max-width: 300px;">
 </p>
 
 The picker value is therefore indepent from the displayed color. The given value is a number between 0 and 1 for each of the two channels. The brightness can be determined by dragging the slider along the Y-axis. Dragging along the X-axis changes the relationship between the two channels.
 
 <p align="center">
-  <img src="docs/img/values.png" align="center" alt="two channel picker screenshot" style="max-width: 500px;">
+  <img src="https://raw.githubusercontent.com/adrianjost/two-channel-picker/master/docs/img/values.png" align="center" alt="two channel picker screenshot" style="max-width: 500px;">
 </p>
 
 ## Usage
 
-### Vue
+### As a native Web Component
+
+```html
+<script src="https://cdn.jsdelivr.net/npm/@adrianjost/two-channel-picker@0.3.1/dist/wc/two-channel-picker.min.js"></script>
+
+<div style="width: 300px; height: 300px;">
+	<two-channel-picker
+		value="[0,1]"
+		id="picker"
+		options='{"colorLeft": "#f00", "colorRight": "#00f" }'
+	></two-channel-picker>
+</div>
+
+<script>
+	document.getElementById("picker").addEventListener("input", (event) => {
+		console.log(event.detail[0]);
+	});
+</script>
+```
+
+> please note, that you may need to adjust the version number in the url.
+
+### with VueJS
 
 Install the package:
 
@@ -54,28 +76,6 @@ export default {
 };
 </script>
 ```
-
-### As a native Web Component
-
-```html
-<script src="https://cdn.jsdelivr.net/npm/@adrianjost/two-channel-picker@0.3.0/dist/wc/two-channel-picker.min.js"></script>
-
-<div style="width: 300px; height: 300px;">
-	<two-channel-picker
-		value="[0,1]"
-		id="picker"
-		options='{"colorLeft": "#f00", "colorRight": "#00f" }'
-	></two-channel-picker>
-</div>
-
-<script>
-	document.getElementById("picker").addEventListener("input", (event) => {
-		console.log(event.detail[0]);
-	});
-</script>
-```
-
-> please note, that you may need to adjust the version number in the url.
 
 ## API
 

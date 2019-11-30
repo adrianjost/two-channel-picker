@@ -1,3 +1,9 @@
+# 0.3.1
+
+**Changes**
+
+- adjusted readme image links and order of sections
+
 # 0.3.0
 
 **Additions**
