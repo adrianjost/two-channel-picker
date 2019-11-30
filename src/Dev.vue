@@ -1,7 +1,7 @@
 <template>
 	<div class="wrapper">
 		<h1> {{ formatedValue }} </h1>
-		<Picker v-model="value" class="picker" />
+		<Picker v-model="value" :options="{ colorLeft: '#f00' }" class="picker" />
 	</div>
 </template>
 
