@@ -1,6 +1,6 @@
 {
 	"name": "@adrianjost/two-channel-picker",
-	"version": "0.2.0",
+	"version": "0.3.0",
 	"author": "Adrian Jost <github@adrianjost.dev> (https://adrianjost.dev)",
 	"scripts": {
 		"lint": "vue-cli-service lint",
@@ -9,10 +9,11 @@
 		"build": "run-p build:*",
 		"dev": "vue-cli-service serve"
 	},
-	"dependencies": {
+	"peerDependencies": {
 		"vue": "^2.6.10"
 	},
 	"devDependencies": {
+		"vue": "^2.6.10",
 		"@vue/cli-plugin-babel": "^3.7.0",
 		"@vue/cli-plugin-eslint": "^3.8.0",
 		"@vue/cli-service": "^4.0.0",
