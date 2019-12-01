@@ -58,7 +58,17 @@ In your App:
 
 ```vue
 <template>
-	<TwoChannelPicker v-model="channels" colorLeft="#fd9" colorRight="#9df" />
+	<TwoChannelPicker
+		v-model="channels"
+		:options="{
+			colorLeft: '#fd9',
+			colorRight: '#9df',
+			marker: {
+				radius: 16,
+				borderWidth: 2,
+			},
+		}"
+	/>
 </template>
 
 <script>
