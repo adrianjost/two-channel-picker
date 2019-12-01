@@ -1,18 +1,20 @@
 exports =
-	process.env.NODE_ENV !== "test"
+	process.env.BUILD_TARGET === "helpers"
 		? {
-				presets: ["@vue/app"],
-		  }
-		: {
 				presets: [
 					[
 						"@babel/env",
 						{
 							targets: {
-								node: "8",
+								node: "current",
+								browsers: "> 0.25%, not dead",
 							},
+							modules: "commonjs",
 						},
 					],
 				],
+		  }
+		: {
+				presets: ["@vue/app"],
 		  };
 module.exports = exports;

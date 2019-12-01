@@ -30,13 +30,13 @@
 </template>
 
 <script>
-import colorConversion from "@/colorConversion.js";
+import colorConversion from "@/helpers/colorConversion.js";
 import {
 	getCenterColor,
 	getChannelsForHueAndBrightness,
 	getColorForHueAndBrightness,
 	getHueAndBrightnessForChannels,
-} from "@/channelColor.js";
+} from "@/helpers/channelColor.js";
 import GlobalEvents from "vue-global-events";
 
 export default {

@@ -87,6 +87,27 @@ export default {
 </script>
 ```
 
+### Helper
+
+The package also includes some helper methods. You can access them by importing the according js files. Please use the JSDoc comments to learn how to use them.
+
+```js
+import {
+	getChannelsForHueAndBrightness,
+	getHueAndBrightnessForChannels,
+	getCenterColor,
+	getColorForHueAndBrightness,
+	getColorForChannels,
+} from "@adrianjost/two-channel-picker/dist/helpers/channelColor.js";
+```
+
+```js
+import {
+	hex2rgb,
+	rgb2hex,
+} from "@adrianjost/two-channel-picker/dist/helpers/colorConversion.js";
+```
+
 ## API
 
 ### Props
