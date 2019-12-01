@@ -31,6 +31,12 @@
 
 <script>
 import colorConversion from "@/colorConversion.js";
+import {
+	getCenterColor,
+	getChannelsForHueAndBrightness,
+	getColorForHueAndBrightness,
+	getHueAndBrightnessForChannels,
+} from "@/channelColor.js";
 import GlobalEvents from "vue-global-events";
 
 export default {
@@ -81,26 +87,18 @@ export default {
 			return this.getTypesafeAttr(this.value);
 		},
 		currentColor() {
-			return this.getColorForPosition({
-				x: this.marker.x,
-				y: this.marker.y,
+			return getColorForHueAndBrightness({
+				colorA: this._options.colorLeft,
+				colorB: this._options.colorRight,
+				hue: this.marker.x,
+				brightness: this.marker.y,
 			});
 		},
 		translate() {
 			return this.getTranslate(this.marker.x, this.marker.y);
 		},
 		colorMid() {
-			const cA = this.hex2rgb(this._options.colorLeft);
-			const cB = this.hex2rgb(this._options.colorRight);
-			const maxColor = (v1, v2) => {
-				const s = v1 + v2;
-				return s > 255 ? 255 : s;
-			};
-			return this.rgb2hex({
-				r: maxColor(cA.r, cB.r),
-				g: maxColor(cA.g, cB.g),
-				b: maxColor(cA.b, cB.b),
-			});
+			return getCenterColor(this._options.colorLeft, this._options.colorRight);
 		},
 		backgroundGradient() {
 			return `linear-gradient(to right, ${this._options.colorLeft} 0%, ${this.colorMid} 50%, ${this._options.colorRight} 100%)`;
@@ -109,7 +107,7 @@ export default {
 	watch: {
 		currentColor(to) {
 			const channels = this.getChannelsForPosition(this.marker);
-			this.$emit("input", channels);
+			this.$emit("input", channels, this.currentColor);
 		},
 		typeSafeValue: {
 			immediate: true,
@@ -125,7 +123,6 @@ export default {
 				this.$options.changeTimeout = setTimeout(() => {
 					this.$options.hasChangedLately = false;
 				}, 200);
-				const { x, y } = this.getPositionForChannels(values);
 				this.marker = this.getPositionForChannels(values);
 			},
 		},
@@ -228,39 +225,6 @@ export default {
 		/*
 			END MARKER POSITIONING
 		*/
-		/*
-			START MARKER STYLES
-		*/
-		getColorBetweenColors(colorA, colorB, position) {
-			const cA = this.hex2rgb(colorA);
-			const cB = this.hex2rgb(colorB);
-			const mixedColor = {
-				r: cA.r + (cB.r - cA.r) * position,
-				g: cA.g + (cB.g - cA.g) * position,
-				b: cA.b + (cB.b - cA.b) * position,
-			};
-			return mixedColor;
-		},
-		getColorForPosition({ x, y }) {
-			let newColor;
-			if (x < 0.5) {
-				newColor = this.getColorBetweenColors(
-					this._options.colorLeft,
-					this.colorMid,
-					x * 2
-				);
-			} else {
-				newColor = this.getColorBetweenColors(
-					this.colorMid,
-					this._options.colorRight,
-					(x - 0.5) * 2
-				);
-			}
-			newColor.r = Math.round(newColor.r * y);
-			newColor.g = Math.round(newColor.g * y);
-			newColor.b = Math.round(newColor.b * y);
-			return this.rgb2hex(newColor);
-		},
 		getMarkerStyles(options) {
 			const { radius, borderWidth } = options.marker;
 			return {
@@ -270,22 +234,16 @@ export default {
 				"border-width": `${borderWidth}px`,
 			};
 		},
-		/*
-			END MARKER STYLES
-		*/
 		/* START V-MODEL CALCULATIONS */
 		getChannelsForPosition({ x, y }) {
-			const maxA = x < 0.5 ? 1 : (1 - x) * 2;
-			const maxB = x > 0.5 ? 1 : x * 2;
-			return [maxA * y, maxB * y];
+			return getChannelsForHueAndBrightness({
+				hue: x,
+				brightness: y,
+			});
 		},
-		getPositionForChannels([a, b]) {
-			const minMax = (min, max, val) => Math.max(min, Math.min(max, val));
-			const scaleFactor = a >= b ? 1 / a || 0 : 1 / b || 0;
-			const scaledValues = [a * scaleFactor, b * scaleFactor];
-			const x = minMax(0, 1, (scaledValues[1] - scaledValues[0] + 1) / 2 || 0);
-			const y = minMax(0, 1, 1 / scaleFactor);
-			return { x, y };
+		getPositionForChannels(channels) {
+			const { hue, brightness } = getHueAndBrightnessForChannels(channels);
+			return { x: hue, y: brightness };
 		},
 		/* END V-MODEL CALCULATIONS */
 	},

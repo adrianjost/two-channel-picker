@@ -1,0 +1,167 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`channelColor.js getCenterColor #f00 #00f 1`] = `"#ff00ff"`;
+
+exports[`channelColor.js getCenterColor #fd9 #9df 1`] = `"#ffffff"`;
+
+exports[`channelColor.js getCenterColor #ffdd99 #99ddff 1`] = `"#ffffff"`;
+
+exports[`channelColor.js getChannelsForHueAndBrightness max Hue max Brightness 1`] = `
+Array [
+  0,
+  1,
+]
+`;
+
+exports[`channelColor.js getChannelsForHueAndBrightness max Hue mid Brightness 1`] = `
+Array [
+  0,
+  0.5,
+]
+`;
+
+exports[`channelColor.js getChannelsForHueAndBrightness max Hue min Brightness 1`] = `
+Array [
+  0,
+  0,
+]
+`;
+
+exports[`channelColor.js getChannelsForHueAndBrightness mid Hue max Brightness 1`] = `
+Array [
+  1,
+  1,
+]
+`;
+
+exports[`channelColor.js getChannelsForHueAndBrightness mid Hue mid Brightness 1`] = `
+Array [
+  0.5,
+  0.5,
+]
+`;
+
+exports[`channelColor.js getChannelsForHueAndBrightness mid Hue min Brightness 1`] = `
+Array [
+  0,
+  0,
+]
+`;
+
+exports[`channelColor.js getChannelsForHueAndBrightness min Hue max Brightness 1`] = `
+Array [
+  1,
+  0,
+]
+`;
+
+exports[`channelColor.js getChannelsForHueAndBrightness min Hue mid Brightness 1`] = `
+Array [
+  0.5,
+  0,
+]
+`;
+
+exports[`channelColor.js getChannelsForHueAndBrightness min Hue min Brightness 1`] = `
+Array [
+  0,
+  0,
+]
+`;
+
+exports[`channelColor.js getColorForChannels [0, 0] 1`] = `"#000000"`;
+
+exports[`channelColor.js getColorForChannels [0, 1] 1`] = `"#99ddff"`;
+
+exports[`channelColor.js getColorForChannels [0.5, 0.5] 1`] = `"#808080"`;
+
+exports[`channelColor.js getColorForChannels [0.5, 0.25] 1`] = `"#807766"`;
+
+exports[`channelColor.js getColorForChannels [0.25, 0.5] 1`] = `"#667780"`;
+
+exports[`channelColor.js getColorForChannels [1, 0] 1`] = `"#ffdd99"`;
+
+exports[`channelColor.js getColorForChannels [1, 1] 1`] = `"#ffffff"`;
+
+exports[`channelColor.js getColorForChannels [1, 1] with default colors 1`] = `"#ffdd99"`;
+
+exports[`channelColor.js getColorForHueAndBrightness max Hue max Brightness 1`] = `"#99ddff"`;
+
+exports[`channelColor.js getColorForHueAndBrightness max Hue mid Brightness 1`] = `"#4d6f80"`;
+
+exports[`channelColor.js getColorForHueAndBrightness max Hue min Brightness 1`] = `"#000000"`;
+
+exports[`channelColor.js getColorForHueAndBrightness mid Hue max Brightness 1`] = `"#ffffff"`;
+
+exports[`channelColor.js getColorForHueAndBrightness mid Hue mid Brightness 1`] = `"#808080"`;
+
+exports[`channelColor.js getColorForHueAndBrightness mid Hue min Brightness 1`] = `"#000000"`;
+
+exports[`channelColor.js getColorForHueAndBrightness min Hue max Brightness 1`] = `"#ffdd99"`;
+
+exports[`channelColor.js getColorForHueAndBrightness min Hue mid Brightness 1`] = `"#806f4d"`;
+
+exports[`channelColor.js getColorForHueAndBrightness min Hue min Brightness 1`] = `"#000000"`;
+
+exports[`channelColor.js getHueAndBrightnessForChannels [0, 0.25] 1`] = `
+Object {
+  "brightness": 0.25,
+  "hue": 1,
+}
+`;
+
+exports[`channelColor.js getHueAndBrightnessForChannels [0, 0] 1`] = `
+Object {
+  "brightness": 0,
+  "hue": 0,
+}
+`;
+
+exports[`channelColor.js getHueAndBrightnessForChannels [0, 1] 1`] = `
+Object {
+  "brightness": 1,
+  "hue": 1,
+}
+`;
+
+exports[`channelColor.js getHueAndBrightnessForChannels [0.5, 0.5] 1`] = `
+Object {
+  "brightness": 0.5,
+  "hue": 0.5,
+}
+`;
+
+exports[`channelColor.js getHueAndBrightnessForChannels [0.5, 0.25] 1`] = `
+Object {
+  "brightness": 0.5,
+  "hue": 0.25,
+}
+`;
+
+exports[`channelColor.js getHueAndBrightnessForChannels [0.25, 0.5] 1`] = `
+Object {
+  "brightness": 0.5,
+  "hue": 0.75,
+}
+`;
+
+exports[`channelColor.js getHueAndBrightnessForChannels [0.25, 0] 1`] = `
+Object {
+  "brightness": 0.25,
+  "hue": 0,
+}
+`;
+
+exports[`channelColor.js getHueAndBrightnessForChannels [1, 0] 1`] = `
+Object {
+  "brightness": 1,
+  "hue": 0,
+}
+`;
+
+exports[`channelColor.js getHueAndBrightnessForChannels [1, 1] 1`] = `
+Object {
+  "brightness": 1,
+  "hue": 0.5,
+}
+`;

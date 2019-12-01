@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`colorConversion hex2rgb 3 digits #000 1`] = `
+Object {
+  "b": 0,
+  "g": 0,
+  "r": 0,
+}
+`;
+
+exports[`colorConversion hex2rgb 3 digits #f00 1`] = `
+Object {
+  "b": 0,
+  "g": 0,
+  "r": 255,
+}
+`;
+
+exports[`colorConversion hex2rgb 3 digits #fff 1`] = `
+Object {
+  "b": 255,
+  "g": 255,
+  "r": 255,
+}
+`;
+
+exports[`colorConversion hex2rgb 6 digits #000000 1`] = `
+Object {
+  "b": 0,
+  "g": 0,
+  "r": 0,
+}
+`;
+
+exports[`colorConversion hex2rgb 6 digits #ff0000 1`] = `
+Object {
+  "b": 0,
+  "g": 0,
+  "r": 255,
+}
+`;
+
+exports[`colorConversion hex2rgb 6 digits #ffffff 1`] = `
+Object {
+  "b": 255,
+  "g": 255,
+  "r": 255,
+}
+`;
