@@ -1,7 +1,9 @@
 <template>
 	<div class="wrapper">
 		<h1> {{ formatedValue }} </h1>
-		<button @click="visible = !visible">toggle visibility</button>
+		<div>
+			<button @click="visible = !visible">toggle visibility</button>
+		</div>
 		<Picker
 			v-if="visible"
 			v-model="value"
