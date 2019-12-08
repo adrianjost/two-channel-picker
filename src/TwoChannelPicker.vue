@@ -130,9 +130,9 @@ export default {
 		hasChangedLately: false,
 	},
 	mounted() {
-		window.addEventListener("mousemove", this.move);
+		window.addEventListener("mousemove", this.move, { passive: false });
 		window.addEventListener("touchmove", this.move, { passive: false });
-		window.addEventListener("mouseup", this.end);
+		window.addEventListener("mouseup", this.end, { passive: true });
 		window.addEventListener("touchend", this.end, { passive: true });
 		window.addEventListener("resize", this.resize, { passive: true });
 		setTimeout(this.resize, 0);
