@@ -29,7 +29,6 @@
 		"prettier": "^1.17.1",
 		"sass-loader": "^8.0.0",
 		"vue": "^2.6.10",
-		"vue-global-events": "^1.1.2",
 		"vue-template-compiler": "^2.5.21",
 		"vuepress": "^1.0.3"
 	},
@@ -76,5 +75,5 @@
 		"test:update": "jest -u",
 		"test:watch": "yarn test --watchAll"
 	},
-	"version": "0.3.2"
+	"version": "0.3.4"
 }

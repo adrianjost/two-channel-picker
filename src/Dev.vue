@@ -1,7 +1,13 @@
 <template>
 	<div class="wrapper">
 		<h1> {{ formatedValue }} </h1>
-		<Picker v-model="value" :options="{ colorLeft: '#f00' }" class="picker" />
+		<button @click="visible = !visible">toggle visibility</button>
+		<Picker
+			v-if="visible"
+			v-model="value"
+			:options="{ colorLeft: '#f00' }"
+			class="picker"
+		/>
 	</div>
 </template>
 
@@ -14,6 +20,7 @@ export default {
 	},
 	data() {
 		return {
+			visible: true,
 			value: [1, 0],
 		};
 	},
