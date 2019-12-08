@@ -1,5 +1,4 @@
 <template>
-	<!-- TODO decouple visual color value from v-model value to fade between full 255 and 0 on only 2 channels -->
 	<div>
 		<div
 			ref="picker"
