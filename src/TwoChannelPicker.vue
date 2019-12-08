@@ -130,10 +130,10 @@ export default {
 		hasChangedLately: false,
 	},
 	mounted() {
-		window.addEventListener("mousemove", this.move);
-		window.addEventListener("touchmove", this.move);
-		window.addEventListener("mouseup", this.end);
-		window.addEventListener("touchend", this.end);
+		window.addEventListener("mousemove", this.move, { passive: false });
+		window.addEventListener("touchmove", this.move, { passive: false });
+		window.addEventListener("mouseup", this.end, { passive: true });
+		window.addEventListener("touchend", this.end, { passive: true });
 		window.addEventListener("resize", this.resize, { passive: true });
 		setTimeout(this.resize, 0);
 	},
@@ -169,14 +169,13 @@ export default {
 			this.$refs.marker.focus();
 			this.resize();
 			this.dragActive = true;
-			this.move(event);
+			this.move(event, true);
 		},
 		end(event) {
 			if (this._options.readOnly) {
 				return;
 			}
-			event.preventDefault();
-			this.move(event);
+			this.move(event, true);
 			this.dragActive = false;
 			this.wasDragged = true;
 		},
@@ -201,11 +200,13 @@ export default {
 		onBlur(event) {
 			this.wasDragged = false;
 		},
-		move(event) {
+		move(event, noPrevent = false) {
 			if (this._options.readOnly || !this.dragActive) {
 				return;
 			}
-			event.preventDefault();
+			if (noPrevent !== true) {
+				event.preventDefault();
+			}
 			if (this.$options.animation.animationFrame) {
 				return;
 			}

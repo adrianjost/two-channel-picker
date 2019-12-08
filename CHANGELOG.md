@@ -1,3 +1,9 @@
+# 0.3.6
+
+**Fixes**
+
+- fix passive touch listeners
+
 # 0.3.5
 
 **Additions**
