@@ -1,3 +1,17 @@
+# 0.3.5
+
+**Additions**
+
+- remove eventListeners before unmount to prevent memory leaks
+- prevent default action of handled events
+
+# 0.3.4
+
+**Additions**
+
+- remove eventListeners before unmount to prevent memory leaks
+- prevent default action of handled events
+
 # 0.3.1
 
 **Changes**
