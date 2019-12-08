@@ -12,12 +12,19 @@
 		>
 			<div
 				ref="marker"
-				:class="{ marker: true, active: dragActive }"
+				@keydown.up="keyMove('up', $event)"
+				@keydown.down="keyMove('down', $event)"
+				@keydown.left="keyMove('left', $event)"
+				@keydown.right="keyMove('right', $event)"
+				@blur="onBlur"
+				:class="{ marker: true, active: dragActive, 'was-dragged': wasDragged }"
 				:style="{
 					background: currentColor,
 					transform: translate,
 					...getMarkerStyles(_options),
 				}"
+				tabindex="0"
+				role="slider"
 			/>
 		</div>
 	</div>
@@ -48,6 +55,7 @@ export default {
 	data() {
 		return {
 			dragActive: false,
+			wasDragged: false,
 			marker: {
 				x: 1,
 				y: 1,
@@ -159,6 +167,7 @@ export default {
 				return;
 			}
 			event.preventDefault();
+			this.$refs.marker.focus();
 			this.resize();
 			this.dragActive = true;
 			this.move(event);
@@ -170,6 +179,28 @@ export default {
 			event.preventDefault();
 			this.move(event);
 			this.dragActive = false;
+			this.wasDragged = true;
+		},
+		keyMove(direction, event) {
+			const step = event.shiftKey ? 0.1 : 0.01;
+			this.wasDragged = false;
+			switch (direction) {
+				case "up":
+					this.marker.y = Math.min(1, this.marker.y + step);
+					break;
+				case "down":
+					this.marker.y = Math.max(0, this.marker.y - step);
+					break;
+				case "right":
+					this.marker.x = Math.min(1, this.marker.x + step);
+					break;
+				case "left":
+					this.marker.x = Math.max(0, this.marker.x - step);
+					break;
+			}
+		},
+		onBlur(event) {
+			this.wasDragged = false;
 		},
 		move(event) {
 			if (this._options.readOnly || !this.dragActive) {
@@ -286,6 +317,19 @@ $borderWidth: 2px;
 	&.active {
 		box-shadow: 0 0 0 2px var(--color-border, #333),
 			0 0 0 2px var(--color-border, #333) inset;
+	}
+	&:focus {
+		&.active,
+		&.was-dragged {
+			outline: none;
+		}
+		&:not(.active):not(.was-dragged) {
+			outline-style: dashed;
+			outline-offset: 0.5rem;
+			outline-width: 3px;
+			box-shadow: 0 0 0 2px var(--color-border, #333),
+				0 0 0 2px var(--color-border, #333) inset;
+		}
 	}
 }
 </style>
