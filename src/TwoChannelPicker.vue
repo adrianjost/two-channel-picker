@@ -1,12 +1,6 @@
 <template>
 	<!-- TODO decouple visual color value from v-model value to fade between full 255 and 0 on only 2 channels -->
 	<div>
-		<GlobalEvents
-			@mousemove="move"
-			@touchmove="move"
-			@mouseup="end"
-			@touchend="end"
-		/>
 		<div
 			ref="picker"
 			:style="{
@@ -37,12 +31,8 @@ import {
 	getColorForHueAndBrightness,
 	getHueAndBrightnessForChannels,
 } from "@/helpers/channelColor.js";
-import GlobalEvents from "vue-global-events";
 
 export default {
-	components: {
-		GlobalEvents,
-	},
 	mixins: [colorConversion],
 	props: {
 		value: {
@@ -133,8 +123,19 @@ export default {
 		hasChangedLately: false,
 	},
 	mounted() {
-		window.addEventListener("resize", this.resize);
+		window.addEventListener("mousemove", this.move);
+		window.addEventListener("touchmove", this.move);
+		window.addEventListener("mouseup", this.end);
+		window.addEventListener("touchend", this.end);
+		window.addEventListener("resize", this.resize, { passive: true });
 		setTimeout(this.resize, 0);
+	},
+	beforeDestroy() {
+		window.removeEventListener("mousemove", this.move);
+		window.removeEventListener("touchmove", this.move);
+		window.removeEventListener("mouseup", this.end);
+		window.removeEventListener("touchend", this.end);
+		window.removeEventListener("resize", this.resize);
 	},
 	methods: {
 		getTypesafeAttr(value) {
@@ -157,6 +158,7 @@ export default {
 			if (this._options.readOnly) {
 				return;
 			}
+			event.preventDefault();
 			this.resize();
 			this.dragActive = true;
 			this.move(event);
@@ -165,15 +167,16 @@ export default {
 			if (this._options.readOnly) {
 				return;
 			}
+			event.preventDefault();
 			this.move(event);
 			this.dragActive = false;
 		},
 		move(event) {
-			if (this._options.readOnly) {
+			if (this._options.readOnly || !this.dragActive) {
 				return;
 			}
-			// event.preventDefault();
-			if (this.$options.animation.animationFrame || !this.dragActive) {
+			event.preventDefault();
+			if (this.$options.animation.animationFrame) {
 				return;
 			}
 			this.$options.animation.animationFrame = window.requestAnimationFrame(
