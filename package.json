@@ -76,5 +76,5 @@
 		"test:update": "jest -u",
 		"test:watch": "yarn test --watchAll"
 	},
-	"version": "0.3.2"
+	"version": "0.3.3"
 }
