@@ -1,5 +1,7 @@
 # @adrianjost/two-channel-picker
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/adrianjost/two-channel-picker.svg)](https://greenkeeper.io/)
+
 > A simple two channel Color Picker
 
 ## About
