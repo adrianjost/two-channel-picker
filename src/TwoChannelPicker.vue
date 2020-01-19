@@ -5,17 +5,12 @@
 			:style="{
 				background: backgroundGradient,
 			}"
+			class="tone-picker"
 			@touchstart="start"
 			@mousedown="start"
-			class="tone-picker"
 		>
 			<div
 				ref="marker"
-				@keydown.up="keyMove('up', $event)"
-				@keydown.down="keyMove('down', $event)"
-				@keydown.left="keyMove('left', $event)"
-				@keydown.right="keyMove('right', $event)"
-				@blur="onBlur"
 				:class="{ marker: true, active: dragActive, 'was-dragged': wasDragged }"
 				:style="{
 					background: currentColor,
@@ -24,6 +19,11 @@
 				}"
 				tabindex="0"
 				role="slider"
+				@keydown.up="keyMove('up', $event)"
+				@keydown.down="keyMove('down', $event)"
+				@keydown.left="keyMove('left', $event)"
+				@keydown.right="keyMove('right', $event)"
+				@blur="onBlur"
 			/>
 		</div>
 	</div>
