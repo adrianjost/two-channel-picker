@@ -1,6 +1,7 @@
 # @adrianjost/two-channel-picker
 
 [![Greenkeeper badge](https://badges.greenkeeper.io/adrianjost/two-channel-picker.svg)](https://greenkeeper.io/)
+![npm (scoped)](https://img.shields.io/npm/v/@adrianjost/two-channel-picker?color=brightgreen)
 
 > A simple two channel Color Picker
 
