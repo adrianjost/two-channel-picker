@@ -1,13 +1,13 @@
 <template>
 	<div class="wrapper">
 		<h1> {{ formatedValue }} </h1>
-		<div>
+		<div style="margin: 1em 0;">
 			<button @click="visible = !visible">toggle visibility</button>
 		</div>
 		<Picker
 			v-if="visible"
 			v-model="value"
-			:options="{ colorLeft: '#f00' }"
+			:options="{ colorLeft: '#9df', colorRight: '#fd9' }"
 			class="picker"
 		/>
 	</div>
@@ -41,7 +41,6 @@ export default {
 	},
 	created() {
 		const storageValue = sessionStorage.getItem("value");
-		console.log(storageValue);
 		if (storageValue) {
 			this.value = JSON.parse(storageValue);
 		}
@@ -51,6 +50,9 @@ export default {
 
 <style lang="scss" scoped>
 .wrapper {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu,
+		"Helvetica Neue", Arial, sans-serif;
+	-webkit-font-smoothing: antialiased;
 	position: absolute;
 	top: 50%;
 	left: 50%;
