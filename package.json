@@ -11,7 +11,7 @@
 		"@babel/core": "^7.7.4",
 		"@babel/preset-env": "^7.9.5",
 		"@vue/babel-preset-app": "^4.3.1",
-		"@vue/cli-plugin-babel": "^4.1.2",
+		"@vue/cli-plugin-babel": "^4.3.1",
 		"@vue/cli-plugin-eslint": "^4.1.2",
 		"@vue/cli-service": "^4.0.0",
 		"@vue/eslint-config-prettier": "^6.0.0",
