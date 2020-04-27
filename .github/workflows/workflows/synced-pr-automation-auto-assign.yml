@@ -1,5 +1,5 @@
 # GENERATED CONTENT
-# remove repo from adrianjost/.github/synced-repos.js before editing
+# remove repo from adrianjost/.github/synced/workflows/generator.js before editing
 name: PR Automation
 'on':
   pull_request:
