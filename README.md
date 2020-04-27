@@ -1,7 +1,6 @@
 # @adrianjost/two-channel-picker
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/adrianjost/two-channel-picker.svg)](https://greenkeeper.io/)
-[![npm (scoped)](https://img.shields.io/npm/v/@adrianjost/two-channel-picker?color=brightgreen)](https://www.npmjs.com/package/@adrianjost/two-channel-picker)
+[![npm (scoped)](https://img.shields.io/npm/v/@adrianjost/two-channel-picker?color=brightgreen)](https://www.npmjs.com/package/@adrianjost/two-channel-picker) [![Dependabot Status](https://api.dependabot.com/badges/status?host=github&repo=adrianjost/two-channel-picker)](https://dependabot.com) [![Dependency Status](https://david-dm.org/adrianjost/two-channel-picker.svg)](https://david-dm.org/adrianjost/two-channel-picker) [![Dependency Status](https://david-dm.org/adrianjost/two-channel-picker/dev-status.svg)](https://david-dm.org/adrianjost/two-channel-picker?type=dev)
 
 > A simple two channel Color Picker
 
