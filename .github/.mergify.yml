@@ -1,7 +1,6 @@
+# GENERATED CONTENT
+# remove repo from adrianjost/.github/synced/workflows/generator.js before editing
 pull_request_rules:
-  #######################
-  # MERGE PRECONDITIONS
-  #######################
   - name: label PRs with conflicts
     conditions:
       - conflict
@@ -12,26 +11,21 @@ pull_request_rules:
   - name: remove has conflicts label if conflicts got resolved
     conditions:
       - label~=has conflicts
-      - -conflict
+      - '-conflict'
     actions:
       label:
         remove:
           - has conflicts
   - name: let @adrianjost recreate dependabot PRs with conflicts
     conditions:
-      - author~=dependabot(-preview)?\[bot\]
+      - 'author~=dependabot(-preview)?\[bot\]'
       - conflict
     actions:
       comment:
-        message: "@adrianjost tell dependabot to recreate PR"
-
-  #######################
-  # AUTO MERGING
-  #######################
+        message: '@adrianjost tell dependabot to recreate PR'
   - name: auto merge passing Dependabot pull requests
     conditions:
-      # match dependabot[bot] and dependabot-preview[bot]
-      - author~=dependabot(-preview)?\[bot\]
+      - 'author~=dependabot(-preview)?\[bot\]'
     actions:
       merge:
         method: squash
@@ -43,10 +37,6 @@ pull_request_rules:
       merge:
         method: merge
         strict: smart
-
-  #######################
-  # CLEANUP AFTER MERGE
-  #######################
   - name: remove ready to merge when merged
     conditions:
       - merged
