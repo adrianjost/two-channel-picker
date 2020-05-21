@@ -72,6 +72,7 @@
 		"build:wc": "npx vue-cli-service build --target wc --inline-vue --name two-channel-picker ./src/TwoChannelPicker.vue --dest dist/wc",
 		"dev": "npx vue-cli-service serve",
 		"lint": "npx vue-cli-service lint",
+		"lint:ci": "npm run lint",
 		"test": "jest",
 		"test:update": "jest -u",
 		"test:watch": "yarn test --watchAll"
