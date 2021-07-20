@@ -8,7 +8,7 @@
 		"url": "https://github.com/adrianjost/two-channel-picker/issues"
 	},
 	"devDependencies": {
-		"@babel/core": "^7.14.6",
+		"@babel/core": "^7.14.8",
 		"@babel/preset-env": "^7.14.8",
 		"@vue/babel-preset-app": "^4.5.13",
 		"@vue/cli-plugin-babel": "^4.5.13",
