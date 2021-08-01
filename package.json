@@ -22,7 +22,7 @@
 		"eslint": "^6.1.0",
 		"eslint-config-prettier": "^6.15.0",
 		"eslint-plugin-prettier": "^3.4.0",
-		"eslint-plugin-vue": "^7.14.0",
+		"eslint-plugin-vue": "^7.15.0",
 		"jest": "^27.0.6",
 		"lint-staged": "^11.1.1",
 		"node-sass": "^5.0.0",
