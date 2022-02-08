@@ -23,7 +23,7 @@ The picker value is therefore indepent from the displayed color. The given value
 ### As a native Web Component
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/@adrianjost/two-channel-picker@0.3.1/dist/wc/two-channel-picker.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@adrianjost/two-channel-picker@0.3.6/dist/wc/two-channel-picker.min.js"></script>
 
 <div style="width: 300px; height: 300px;">
 	<two-channel-picker
@@ -44,19 +44,25 @@ The picker value is therefore indepent from the displayed color. The given value
 
 ### with VueJS
 
-Install the package:
+
+#### Vue 2
+
+Don't worry about the <1 version number. I haven't found any issues in the last 2 years so v1 will use an identical implementation, but is vue3 compatible.
 
 ```bash
-npm i @adrianjost/two-channel-picker
+npm i @adrianjost/two-channel-picker@0.3.6
+# or
+yarn add @adrianjost/two-channel-picker@0.3.6
 ```
-
-or
 
 ```bash
-yarn add @adrianjost/two-channel-picker
+npm i @adrianjost/two-channel-picker@1.0.0@beta.1
+# or
+yarn add @adrianjost/two-channel-picker@1.0.0@beta.1
 ```
 
-In your App:
+
+#### Usage in your App
 
 ```vue
 <template>

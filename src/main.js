@@ -1,11 +1,7 @@
-import Vue from "vue";
+import { createApp } from "vue";
+import DevUI from "./DevUI.vue";
 
-Vue.config.silent = false;
-Vue.config.performance = true;
-Vue.config.productionTip = false;
+const app = createApp(DevUI);
+app.config.performance = true;
 
-import Dev from "./Dev.vue";
-
-new Vue({
-	render: (h) => h(Dev),
-}).$mount("#app");
+app.mount("#app");

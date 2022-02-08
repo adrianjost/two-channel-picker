@@ -8,30 +8,32 @@
 		"url": "https://github.com/adrianjost/two-channel-picker/issues"
 	},
 	"devDependencies": {
-		"@babel/core": "^7.16.0",
-		"@babel/preset-env": "^7.16.4",
-		"@vue/babel-preset-app": "^4.5.15",
-		"@vue/cli-plugin-babel": "^4.5.15",
-		"@vue/cli-plugin-eslint": "^4.5.15",
-		"@vue/cli-service": "^4.5.15",
-		"@vue/eslint-config-prettier": "^6.0.0",
+		"@babel/core": "^7.17.0",
+		"@babel/eslint-parser": "^7.17.0",
+		"@babel/preset-env": "^7.16.11",
+		"@vue/babel-preset-app": "^5.0.0-rc.2",
+		"@vue/cli": "^5.0.0-rc.2",
+		"@vue/cli-plugin-babel": "^5.0.0-rc.2",
+		"@vue/cli-plugin-eslint": "^5.0.0-rc.2",
+		"@vue/cli-service": "^5.0.0-rc.2",
+		"@vue/compiler-sfc": "^3.2.30",
+		"@vue/eslint-config-prettier": "^7.0.0",
 		"babel-cli": "^6.26.0",
-		"babel-eslint": "^10.1.0",
-		"babel-jest": "^27.4.2",
+		"babel-jest": "^27.5.1",
 		"cross-env": "^7.0.3",
-		"eslint": "^6.1.0",
-		"eslint-config-prettier": "^6.15.0",
-		"eslint-plugin-prettier": "^3.4.1",
-		"eslint-plugin-vue": "^7.20.0",
-		"jest": "^27.4.3",
-		"lint-staged": "^12.1.2",
-		"node-sass": "^5.0.0",
+		"eslint": "^8.8.0",
+		"eslint-config-prettier": "^8.3.0",
+		"eslint-plugin-prettier": "^4.0.0",
+		"eslint-plugin-vue": "^8.4.1",
+		"jest": "^27.5.1",
+		"lint-staged": "^12.3.3",
+		"node-sass": "^6.0.1",
 		"npm-run-all": "^4.1.5",
-		"prettier": "^2.5.0",
-		"sass-loader": "^10.1.1",
-		"vue": "^2.6.14",
-		"vue-eslint-parser": "^8.0.1",
-		"vue-template-compiler": "^2.6.14"
+		"prettier": "^2.5.1",
+		"sass-loader": "^10.2.1",
+		"vue": "^3.2.30",
+		"vue-eslint-parser": "^8.2.0",
+		"webpack": "^5.68.0"
 	},
 	"files": [
 		"dist/*",
@@ -66,7 +68,7 @@
 	"repository": "github:adrianjost/two-channel-picker",
 	"scripts": {
 		"build": "run-p build:*",
-		"build:demo": "npx vue-cli-service build --target lib --name DemoTwoChannelPicker ./src/Dev.vue --mode production --dest dist/demo",
+		"build:demo": "npx vue-cli-service build --target lib --name DemoTwoChannelPicker ./src/DevUI.vue --mode production --dest dist/demo",
 		"build:helper": "cross-env BUILD_TARGET=helpers babel src/helpers/ --out-dir dist/helpers --ignore src/**/*.*.*",
 		"build:vue": "npx vue-cli-service build --target lib --name TwoChannelPicker ./src/TwoChannelPicker.vue --mode production --dest dist/vue",
 		"build:wc": "npx vue-cli-service build --target wc --inline-vue --name two-channel-picker ./src/TwoChannelPicker.vue --dest dist/wc",
@@ -75,7 +77,7 @@
 		"lint:ci": "npm run lint",
 		"test": "jest",
 		"test:update": "jest -u",
-		"test:watch": "yarn test --watchAll"
+		"test:watch": "npm run test --watchAll"
 	},
-	"version": "0.3.6"
+	"version": "1.0.0-beta.1"
 }

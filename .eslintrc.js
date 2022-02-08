@@ -3,7 +3,7 @@ module.exports = {
 	parser: "vue-eslint-parser",
 
 	parserOptions: {
-		parser: "babel-eslint",
+		parser: "@babel/eslint-parser",
 		sourceType: "module",
 	},
 
@@ -11,15 +11,7 @@ module.exports = {
 		node: true,
 	},
 
-	extends: [
-		// https://github.com/vuejs/eslint-plugin-vue#bulb-rules
-		"plugin:vue/recommended",
-		// https://github.com/prettier/eslint-config-prettier
-		"prettier",
-		"prettier/standard",
-		"prettier/vue",
-		"@vue/prettier",
-	],
+	extends: ["plugin:vue/recommended", "prettier", "@vue/prettier"],
 
 	rules: {
 		"vue/require-prop-types": "error",

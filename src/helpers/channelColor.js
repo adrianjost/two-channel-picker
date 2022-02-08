@@ -19,7 +19,7 @@ export const getChannelsForHueAndBrightness = ({ hue, brightness }) => {
  */
 export const getHueAndBrightnessForChannels = ([a, b]) => {
 	const minMax = (min, max, val) => Math.max(min, Math.min(max, val));
-	const scaleFactor = a >= b ? 1 / a || 0 : 1 / b || 0;
+	const scaleFactor = a >= b ? 1 / a : 1 / b;
 	const scaledValues = [a * scaleFactor, b * scaleFactor];
 	const hue = minMax(0, 1, (scaledValues[1] - scaledValues[0] + 1) / 2 || 0);
 	const brightness = minMax(0, 1, 1 / scaleFactor);

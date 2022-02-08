@@ -41,7 +41,7 @@ import {
 export default {
 	mixins: [colorConversion],
 	props: {
-		value: {
+		modelValue: {
 			type: [Array, String],
 			default: () => [1, 0],
 			validator: (v) => v[0] >= 0 && v[0] <= 1 && v[1] >= 0 && v[1] <= 1,
@@ -81,7 +81,7 @@ export default {
 			};
 		},
 		typeSafeValue() {
-			return this.getTypesafeAttr(this.value);
+			return this.getTypesafeAttr(this.modelValue);
 		},
 		currentColor() {
 			return getColorForHueAndBrightness({
@@ -104,10 +104,11 @@ export default {
 	watch: {
 		currentColor(to) {
 			const channels = this.getChannelsForPosition(this.marker);
-			this.$emit("input", channels, this.currentColor);
+			this.$emit("update:modelValue", channels, this.currentColor);
 		},
 		typeSafeValue: {
 			immediate: true,
+			deep: true,
 			handler(values) {
 				if (this.$options.hasChangedLately) {
 					clearTimeout(this.$options.changeTimeout);
@@ -137,7 +138,7 @@ export default {
 		window.addEventListener("resize", this.resize, { passive: true });
 		setTimeout(this.resize, 0);
 	},
-	beforeDestroy() {
+	beforeUnmount() {
 		window.removeEventListener("mousemove", this.move);
 		window.removeEventListener("touchmove", this.move);
 		window.removeEventListener("mouseup", this.end);

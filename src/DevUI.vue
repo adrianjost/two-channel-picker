@@ -1,7 +1,7 @@
 <template>
 	<div class="wrapper">
 		<h1> {{ formatedValue }} </h1>
-		<div style="margin: 1em 0;">
+		<div style="margin: 1em 0">
 			<button @click="visible = !visible">toggle visibility</button>
 		</div>
 		<Picker
@@ -35,8 +35,11 @@ export default {
 		},
 	},
 	watch: {
-		value(to) {
-			sessionStorage.setItem("value", JSON.stringify(to));
+		value: {
+			deep: true,
+			handler(to) {
+				sessionStorage.setItem("value", JSON.stringify(to));
+			},
 		},
 	},
 	created() {
