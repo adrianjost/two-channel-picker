@@ -71,7 +71,7 @@
 		"build:demo": "npx vue-cli-service build --target lib --name DemoTwoChannelPicker ./src/DevUI.vue --mode production --dest dist/demo",
 		"build:helper": "cross-env BUILD_TARGET=helpers babel src/helpers/ --out-dir dist/helpers --ignore src/**/*.*.*",
 		"build:vue": "npx vue-cli-service build --target lib --name TwoChannelPicker ./src/TwoChannelPicker.vue --mode production --dest dist/vue",
-		"build:wc": "npx vue-cli-service build --target wc --inline-vue --name two-channel-picker ./src/TwoChannelPicker.vue --dest dist/wc",
+		"disabled:build:wc": "npx vue-cli-service build --target wc --inline-vue --name two-channel-picker ./src/TwoChannelPicker.vue --dest dist/wc",
 		"dev": "npx vue-cli-service serve",
 		"lint": "npx vue-cli-service lint",
 		"lint:ci": "npm run lint",
