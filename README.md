@@ -50,15 +50,17 @@ The picker value is therefore indepent from the displayed color. The given value
 Don't worry about the <1 version number. I haven't found any issues in the last 2 years so v1 will use an identical implementation, but is vue3 compatible.
 
 ```bash
-npm i @adrianjost/two-channel-picker@0.3.6
+npm i @adrianjost/two-channel-picker
 # or
-yarn add @adrianjost/two-channel-picker@0.3.6
+yarn add @adrianjost/two-channel-picker
 ```
 
+#### Vue 3
+
 ```bash
-npm i @adrianjost/two-channel-picker@1.0.0@beta.1
+npm i @adrianjost/two-channel-picker@next
 # or
-yarn add @adrianjost/two-channel-picker@1.0.0@beta.1
+yarn add @adrianjost/two-channel-picker@next
 ```
 
 
