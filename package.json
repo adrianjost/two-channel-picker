@@ -33,7 +33,7 @@
 		"sass-loader": "^13.0.2",
 		"vue": "^3.2.37",
 		"vue-eslint-parser": "^9.0.3",
-		"webpack": "^5.73.0"
+		"webpack": "^5.74.0"
 	},
 	"files": [
 		"dist/*",
