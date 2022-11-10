@@ -16,7 +16,7 @@
 		"@vue/cli-plugin-babel": "^5.0.8",
 		"@vue/cli-plugin-eslint": "^5.0.8",
 		"@vue/cli-service": "^5.0.8",
-		"@vue/compiler-sfc": "^3.2.40",
+		"@vue/compiler-sfc": "^3.2.44",
 		"@vue/eslint-config-prettier": "^7.0.0",
 		"babel-cli": "^6.26.0",
 		"babel-jest": "^29.3.1",
@@ -33,7 +33,7 @@
 		"sass-loader": "^13.2.0",
 		"vue": "^3.2.41",
 		"vue-eslint-parser": "^9.1.0",
-		"webpack": "^5.74.0"
+		"webpack": "^5.75.0"
 	},
 	"files": [
 		"dist/*",
