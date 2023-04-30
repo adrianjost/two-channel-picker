@@ -10,7 +10,7 @@
 	"devDependencies": {
 		"@babel/core": "^7.21.4",
 		"@babel/eslint-parser": "^7.21.3",
-		"@babel/preset-env": "^7.21.4",
+		"@babel/preset-env": "^7.21.5",
 		"@vue/babel-preset-app": "^5.0.7",
 		"@vue/cli": "^5.0.8",
 		"@vue/cli-plugin-babel": "^5.0.8",
