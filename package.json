@@ -32,7 +32,7 @@
 		"prettier": "^2.8.8",
 		"sass-loader": "^13.2.2",
 		"vue": "^3.2.47",
-		"vue-eslint-parser": "^9.1.1",
+		"vue-eslint-parser": "^9.2.0",
 		"webpack": "^5.81.0"
 	},
 	"files": [
