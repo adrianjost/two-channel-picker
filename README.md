@@ -1,10 +1,10 @@
 # @adrianjost/two-channel-picker
 
-[![npm (scoped)](https://img.shields.io/npm/v/@adrianjost/two-channel-picker?color=brightgreen)](https://www.npmjs.com/package/@adrianjost/two-channel-picker) [![Dependabot Status](https://api.dependabot.com/badges/status?host=github&repo=adrianjost/two-channel-picker)](https://dependabot.com) [![Dependency Status](https://david-dm.org/adrianjost/two-channel-picker.svg)](https://david-dm.org/adrianjost/two-channel-picker) [![Dependency Status](https://david-dm.org/adrianjost/two-channel-picker/dev-status.svg)](https://david-dm.org/adrianjost/two-channel-picker?type=dev) [![Netlify Deployment Status](https://api.netlify.com/api/v1/badges/cfdb9ce5-4577-4b02-9833-0bdbba1cbf35/deploy-status)](https://two-channel-picker.adrianjost.dev)
+[![npm (scoped)](https://img.shields.io/npm/v/@adrianjost/two-channel-picker?color=brightgreen)](https://www.npmjs.com/package/@adrianjost/two-channel-picker) [![Dependabot Status](https://api.dependabot.com/badges/status?host=github&repo=adrianjost/two-channel-picker)](https://dependabot.com) [![Dependency Status](https://david-dm.org/adrianjost/two-channel-picker.svg)](https://david-dm.org/adrianjost/two-channel-picker) [![Dependency Status](https://david-dm.org/adrianjost/two-channel-picker/dev-status.svg)](https://david-dm.org/adrianjost/two-channel-picker?type=dev) [![Netlify Deployment Status](https://api.netlify.com/api/v1/badges/cfdb9ce5-4577-4b02-9833-0bdbba1cbf35/deploy-status)](https://two-channel-picker.adrianjost.dev/demo.html)
 
 > A simple two channel Color Picker
 
-Demo: [https://two-channel-picker.adrianjost.dev](https://two-channel-picker.adrianjost.dev)
+▶️ Demo: [https://two-channel-picker.adrianjost.dev/demo.html](https://two-channel-picker.adrianjost.dev/demo.html)
 
 ## About
 
