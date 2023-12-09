@@ -316,7 +316,8 @@ $borderWidth: 2px;
 	border-radius: 50%;
 
 	&.active {
-		box-shadow: 0 0 0 2px var(--color-border, #333),
+		box-shadow:
+			0 0 0 2px var(--color-border, #333),
 			0 0 0 2px var(--color-border, #333) inset;
 	}
 	&:focus {
@@ -328,7 +329,8 @@ $borderWidth: 2px;
 			outline-style: dashed;
 			outline-offset: 0.5rem;
 			outline-width: 3px;
-			box-shadow: 0 0 0 2px var(--color-border, #333),
+			box-shadow:
+				0 0 0 2px var(--color-border, #333),
 				0 0 0 2px var(--color-border, #333) inset;
 		}
 	}

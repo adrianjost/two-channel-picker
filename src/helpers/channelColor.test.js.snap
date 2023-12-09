@@ -7,63 +7,63 @@ exports[`channelColor.js getCenterColor #fd9 #9df 1`] = `"#ffffff"`;
 exports[`channelColor.js getCenterColor #ffdd99 #99ddff 1`] = `"#ffffff"`;
 
 exports[`channelColor.js getChannelsForHueAndBrightness max Hue max Brightness 1`] = `
-Array [
+[
   0,
   1,
 ]
 `;
 
 exports[`channelColor.js getChannelsForHueAndBrightness max Hue mid Brightness 1`] = `
-Array [
+[
   0,
   0.5,
 ]
 `;
 
 exports[`channelColor.js getChannelsForHueAndBrightness max Hue min Brightness 1`] = `
-Array [
+[
   0,
   0,
 ]
 `;
 
 exports[`channelColor.js getChannelsForHueAndBrightness mid Hue max Brightness 1`] = `
-Array [
+[
   1,
   1,
 ]
 `;
 
 exports[`channelColor.js getChannelsForHueAndBrightness mid Hue mid Brightness 1`] = `
-Array [
+[
   0.5,
   0.5,
 ]
 `;
 
 exports[`channelColor.js getChannelsForHueAndBrightness mid Hue min Brightness 1`] = `
-Array [
+[
   0,
   0,
 ]
 `;
 
 exports[`channelColor.js getChannelsForHueAndBrightness min Hue max Brightness 1`] = `
-Array [
+[
   1,
   0,
 ]
 `;
 
 exports[`channelColor.js getChannelsForHueAndBrightness min Hue mid Brightness 1`] = `
-Array [
+[
   0.5,
   0,
 ]
 `;
 
 exports[`channelColor.js getChannelsForHueAndBrightness min Hue min Brightness 1`] = `
-Array [
+[
   0,
   0,
 ]
@@ -104,63 +104,63 @@ exports[`channelColor.js getColorForHueAndBrightness min Hue mid Brightness 1`] 
 exports[`channelColor.js getColorForHueAndBrightness min Hue min Brightness 1`] = `"#000000"`;
 
 exports[`channelColor.js getHueAndBrightnessForChannels [0, 0.25] 1`] = `
-Object {
+{
   "brightness": 0.25,
   "hue": 1,
 }
 `;
 
 exports[`channelColor.js getHueAndBrightnessForChannels [0, 0] 1`] = `
-Object {
+{
   "brightness": 0,
   "hue": 0,
 }
 `;
 
 exports[`channelColor.js getHueAndBrightnessForChannels [0, 1] 1`] = `
-Object {
+{
   "brightness": 1,
   "hue": 1,
 }
 `;
 
 exports[`channelColor.js getHueAndBrightnessForChannels [0.5, 0.5] 1`] = `
-Object {
+{
   "brightness": 0.5,
   "hue": 0.5,
 }
 `;
 
 exports[`channelColor.js getHueAndBrightnessForChannels [0.5, 0.25] 1`] = `
-Object {
+{
   "brightness": 0.5,
   "hue": 0.25,
 }
 `;
 
 exports[`channelColor.js getHueAndBrightnessForChannels [0.25, 0.5] 1`] = `
-Object {
+{
   "brightness": 0.5,
   "hue": 0.75,
 }
 `;
 
 exports[`channelColor.js getHueAndBrightnessForChannels [0.25, 0] 1`] = `
-Object {
+{
   "brightness": 0.25,
   "hue": 0,
 }
 `;
 
 exports[`channelColor.js getHueAndBrightnessForChannels [1, 0] 1`] = `
-Object {
+{
   "brightness": 1,
   "hue": 0,
 }
 `;
 
 exports[`channelColor.js getHueAndBrightnessForChannels [1, 1] 1`] = `
-Object {
+{
   "brightness": 1,
   "hue": 0.5,
 }
