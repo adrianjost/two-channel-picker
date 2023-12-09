@@ -1,8 +1,10 @@
 # @adrianjost/two-channel-picker
 
-[![npm (scoped)](https://img.shields.io/npm/v/@adrianjost/two-channel-picker?color=brightgreen)](https://www.npmjs.com/package/@adrianjost/two-channel-picker) [![Dependabot Status](https://api.dependabot.com/badges/status?host=github&repo=adrianjost/two-channel-picker)](https://dependabot.com) [![Dependency Status](https://david-dm.org/adrianjost/two-channel-picker.svg)](https://david-dm.org/adrianjost/two-channel-picker) [![Dependency Status](https://david-dm.org/adrianjost/two-channel-picker/dev-status.svg)](https://david-dm.org/adrianjost/two-channel-picker?type=dev)
+[![npm (scoped)](https://img.shields.io/npm/v/@adrianjost/two-channel-picker?color=brightgreen)](https://www.npmjs.com/package/@adrianjost/two-channel-picker) [![Dependabot Status](https://api.dependabot.com/badges/status?host=github&repo=adrianjost/two-channel-picker)](https://dependabot.com) [![Dependency Status](https://david-dm.org/adrianjost/two-channel-picker.svg)](https://david-dm.org/adrianjost/two-channel-picker) [![Dependency Status](https://david-dm.org/adrianjost/two-channel-picker/dev-status.svg)](https://david-dm.org/adrianjost/two-channel-picker?type=dev) [![Netlify Deployment Status](https://api.netlify.com/api/v1/badges/cfdb9ce5-4577-4b02-9833-0bdbba1cbf35/deploy-status)](https://two-channel-picker.adrianjost.dev)
 
 > A simple two channel Color Picker
+
+Demo: [https://two-channel-picker.adrianjost.dev](https://two-channel-picker.adrianjost.dev)
 
 ## About
 
@@ -44,7 +46,6 @@ The picker value is therefore indepent from the displayed color. The given value
 
 ### with VueJS
 
-
 #### Vue 2
 
 Don't worry about the <1 version number. I haven't found any issues in the last 2 years so v1 will use an identical implementation, but is vue3 compatible.
@@ -62,7 +63,6 @@ npm i @adrianjost/two-channel-picker@next
 # or
 yarn add @adrianjost/two-channel-picker@next
 ```
-
 
 #### Usage in your App
 
