@@ -19,7 +19,7 @@
 		"@vue/compiler-sfc": "^3.5.16",
 		"@vue/eslint-config-prettier": "^9.0.0",
 		"babel-cli": "^6.26.0",
-		"babel-jest": "^30.0.0",
+		"babel-jest": "^30.0.1",
 		"cross-env": "^7.0.3",
 		"eslint": "^8.57.0",
 		"eslint-config-prettier": "^10.1.5",
